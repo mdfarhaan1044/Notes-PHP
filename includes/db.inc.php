@@ -4,7 +4,7 @@ $db   = getenv('DB_NAME') ?: 'notes';
 $user = getenv('DB_USER') ?: 'root';
 $pass = getenv('DB_PASS') ?: '';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=utf8";
+$dsn = "mysql:host=$host;port=3306;dbname=$db;charset=utf8";
 
 try {
     $pdo = new PDO($dsn, $user, $pass);
