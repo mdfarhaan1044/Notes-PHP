@@ -19,28 +19,37 @@ if (!isset($_SESSION['user'])) {
 </head>
 
 <body>
-    <?php include 'includes/db.inc.php';
-    $notes = $pdo->query("SELECT * FROM notes WHERE user_id = {$_SESSION['user_id']}");
-    ?>
+    <div>
 
-    <h1>Welcome, <?php echo $_SESSION['user']; ?>!</h1>
-    <p>You can add notes here <a href="addNote.php">Add Note</a></p>
+        <?php include 'includes/db.inc.php';
+        $notes = $pdo->query("SELECT * FROM notes WHERE user_id = {$_SESSION['user_id']}");
+        ?>
+        <header class="flex justify-between p-4 m-5 border-2  rounded-lg bg-white">
+            <h1>Welcome,<span class="text-2xl font-bold"> <?php echo $_SESSION['user']; ?>!</span></h1>
+            <a href="logout.php">Logout</a>
+        </header>
+        <div class="flex p-4 m-5 border-2  rounded-lg bg-white justify-between">
+            <p>You can add notes here <span class="text-blue-500 hover:underline cursor-pointer"><a href="addNote.php">Add Note</a></span></p>
+        </div>
 
-    <?php
-    while ($note = $notes->fetch()) {
-        echo "<div class='bg-red-500 p-4 mb-4'>";
-        echo "<p>{$note['title']}</p>";
-        echo "<p>{$note['content']}</p>";
-        echo "<p>{$note['updated_at']}</p>";
-        echo "<hr>";
-        echo "<a href='updateNote.php?id={$note['id']}'>Update</a>";
-        echo "<a href='deleteNote.php?id={$note['id']}'>Delete</a>";
-        echo "</div>";
-    }
-    ?>
+        <?php
+        while ($note = $notes->fetch()) {
+            echo "<div class='p-4 m-5 border-2  rounded-lg bg-white'>";
+            echo "<div class=''>";
+            echo "<p><span class='font-bold'>Title:</span> {$note['title']}</p>";
+            echo "<p class='truncate max-w-[70%]'><span class='font-bold'>Content:</span> {$note['content']}</p>";
+            echo "<p><span class='font-bold'>Updated At:</span> {$note['updated_at']}</p>";
+            echo "<hr>";
+            echo "</div>";
+            echo "<div class='flex justify-end'>";
+            echo "<a type='button' class='text-white p-2 hover:underline bg-green-500 rounded-lg m-2 ' href=note.php?id={$note['id']}>View</a>";
+            echo "<a type='button' class='text-white p-2 hover:underline bg-blue-500 rounded-lg m-2 ' href=updateNote.php?id={$note['id']}>Update</a>";
+            echo "<a type='button' class='text-white p-2 hover:underline bg-red-500 rounded-lg m-2 ' href=deleteNote.php?id={$note['id']}>Delete</a>";
+            echo "</div>";
+            echo "</div>";
+        }
+        ?>
+    </div>
 </body>
 
 </html>
-
-
-<a href="logout.php">Logout</a>

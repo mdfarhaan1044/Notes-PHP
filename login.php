@@ -33,13 +33,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <form method="POST">
-        Username: <input type="text" name="username" required><br>
-        Password: <input type="password" name="password" required><br>
-        <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="register.php">Register</a></p>
+<body class="flex items-center justify-center h-screen bg-blue-300">
+    <div class="flex flex-col items-center justify-center w-[350px] h-[90vh] m-5 border-2  rounded-lg bg-white">
+        <h1 class="text-2xl font-bold mb-5">Login</h1>
+        <form method="POST">
+            Username: <input class="border border-gray-300 rounded-lg p-2 mb-2 w-full" type="text" name="username" required><br>
+            Password: <input class="border border-gray-300 rounded-lg p-2 mb-2 w-full" type="password" name="password" required><br>
+            <button class=" mb-5 w-full bg-blue-500 text-white p-2 rounded-lg" type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a class="text-white p-2 hover:underline bg-blue-500 rounded-lg" href="register.php">Register</a></p>
+    </div>
 </body>
 
 </html>
