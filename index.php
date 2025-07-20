@@ -18,7 +18,7 @@ if (!isset($_SESSION['user'])) {
 
 </head>
 
-<body>
+<body class=" bg-blue-300">
     <div>
 
         <?php include 'includes/db.inc.php';
@@ -26,10 +26,10 @@ if (!isset($_SESSION['user'])) {
         ?>
         <header class="flex justify-between p-4 m-5 border-2  rounded-lg bg-white">
             <h1>Welcome,<span class="text-2xl font-bold"> <?php echo $_SESSION['user']; ?>!</span></h1>
-            <a href="logout.php">Logout</a>
+            <a class="text-white p-2 hover:underline bg-blue-500 rounded-lg" href="logout.php">Logout</a>
         </header>
         <div class="flex p-4 m-5 border-2  rounded-lg bg-white justify-between">
-            <p>You can add notes here <span class="text-blue-500 hover:underline cursor-pointer"><a href="addNote.php">Add Note</a></span></p>
+            <p><a class="text-white p-2 hover:underline bg-blue-500 rounded-lg" href="addNote.php">Create a new note</a></p>
         </div>
 
         <?php

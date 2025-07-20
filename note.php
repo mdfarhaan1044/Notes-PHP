@@ -17,22 +17,23 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Your Note</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <div>
-        <header>
-            <h1>View Note</h1>
+<body class="flex items-center justify-center h-screen bg-blue-300">
+    <div class="p-4 m-5 border-2  rounded-lg bg-white">
+        <header class="mb-5 flex flex-col justify-evenly items-center">
+            <h1 class="text-2xl font-bold">Title: <?php echo $note['title']; ?></h1>
+            <p><strong>Updated At:</strong> <?php echo $note['updated_at']; ?></p>
         </header>
-        <main>
-            <p><?php echo $note['content']; ?></p>
+        <main class="p-4 m-5 border-2  rounded-lg bg-white">
+            <p class=""><?php echo $note['content']; ?></p>
         </main>
-        <footer>
-            <button class="text-white p-2 hover:underline bg-blue-500 rounded-lg m-2 " href="updateNote.php?id=<?php echo $note['id']; ?>">Update</button>
-            <button class="text-white p-2 hover:underline bg-red-500 rounded-lg m-2 " href="deleteNote.php?id=<?php echo $note['id']; ?>">Delete</button>
-        </footer>
+        <div class="flex justify-end">
+            <a class="text-white p-2 hover:underline bg-blue-500 rounded-lg m-2 " href="updateNote.php?id=<?php echo $note['id']; ?>">Update</a>
+            <a class="text-white p-2 hover:underline bg-red-500 rounded-lg m-2 " href="deleteNote.php?id=<?php echo $note['id']; ?>">Delete</a>
+        </div>
     </div>
 </body>
 

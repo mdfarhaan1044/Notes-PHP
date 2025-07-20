@@ -35,13 +35,18 @@ $note = $pdo->query("SELECT * FROM notes WHERE id = {$_GET['id']}")->fetch();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Note</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <form method="post">
-        <input type="hidden" name="id" value="<?= $note['id'] ?>">
-        <input type="submit" value="Delete Note">
-    </form>
+<body class="flex items-center justify-center h-screen bg-blue-300">
+    <div class="flex flex-col">
+        <h1 class="text-2xl font-bold mb-5">Are you sure you want to delete this note?</h1>
+        <form class="flex flex-row gap-5 justify-center" method="post">
+            <input class="mb-5" type="hidden" name="id" value="<?= $note['id'] ?>">
+            <input class="p-3 px-5 rounded-lg bg-red-500 hover:bg-red-600 text-white" type="submit" value="Yes">
+            <a href="index.php" class="p-3 px-5 rounded-lg bg-gray-500 hover:bg-gray-600 text-white">No</a>
+        </form>
+    </div>
 </body>
 
 </html>
